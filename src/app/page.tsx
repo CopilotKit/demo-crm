@@ -1,6 +1,10 @@
 "use client";
 
 import { useMakeCopilotReadable } from '@copilotkit/react-core';
+import { useMakeCopilotDocumentReadable, DocumentPointer } from '@copilotkit/react-document';
+import { CopilotTextarea } from '@copilotkit/react-textarea';
+import { useState } from 'react';
+
 import Image from 'next/image'
 
 export default function Home() {
@@ -45,6 +49,8 @@ export default function Home() {
           priority
         />
       </div>
+
+      <SomeReactComponent />
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
@@ -117,4 +123,39 @@ export default function Home() {
       </div>
     </main>
   )
+}
+
+const document: DocumentPointer = {
+  id: "2",
+  name: "Travel Pet Peeves",
+  sourceApplication: "Google Docs",
+  iconImageUri: "/images/GoogleDocs.svg",
+  getContents: () => { return "hello document" },
+} as DocumentPointer;
+
+
+export function SomeReactComponent(): JSX.Element {
+  const [text, setText] = useState("");
+
+  return (
+    <>
+      <CopilotTextarea
+        className="px-4 py-4 w-1/2"
+        value={text}
+        onValueChange={(value: string) => setText(value)}
+        placeholder="What are your plans for your vacation?"
+        autosuggestionsConfig={{
+          textareaPurpose: "Travel notes to another dimension",
+          chatApiConfigs: {
+            suggestionsApiConfig: {
+              forwardedParams: {
+                max_tokens: 20,
+                stop: [".", "?", "!"],
+              },
+            },
+          },
+        }}
+      />
+    </>
+  );
 }
