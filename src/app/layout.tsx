@@ -1,7 +1,8 @@
 "use client";
 import { CopilotProvider } from "@copilotkit/react-core";
 import { CopilotSidebarUIProvider } from "@copilotkit/react-ui";
-import "@copilotkit/react-ui/styles.css"; // also import this if you want to use the chatbot component
+import "@copilotkit/react-ui/styles.css"; 
+import "@copilotkit/react-textarea/styles.css"; 
 
 import { Inter } from 'next/font/google'
 import './globals.css'
