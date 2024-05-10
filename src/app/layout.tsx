@@ -18,9 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <CopilotProvider chatApiEndpoint="/api/copilotkit/openai">
-          <CopilotSidebarUIProvider>
             {children}
-          </CopilotSidebarUIProvider>
         </CopilotProvider>
       </body>
     </html>
