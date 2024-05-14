@@ -16,7 +16,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CopilotKit runtimeUrl="/api/copilotkit/openai">{children}</CopilotKit>
+        <CopilotKit
+          publicApiKey={process.env.NEXT_PUBLIC_COPILOT_CLOUD_API_KEY}
+          // Alternatively, you can use runtimeUrl to host your own CopilotKit Runtime
+          // runtimeUrl="/api/copilotkit"
+        >
+          {children}
+        </CopilotKit>
       </body>
     </html>
   );
