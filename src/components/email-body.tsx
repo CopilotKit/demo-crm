@@ -1,6 +1,4 @@
-
-import { CopilotTextarea } from '@copilotkit/react-textarea';
-
+import { CopilotTextarea } from "@copilotkit/react-textarea";
 
 interface EmailBodyTextareaProps {
   emailBody: string;
@@ -19,21 +17,21 @@ export function EmailBodyTextarea(props: EmailBodyTextareaProps) {
         opacity: 0.5,
       }}
       autosuggestionsConfig={{
-        textareaPurpose: "A proposal for a prospective client contract - follow-up to a previous call with Robert & Sarah",
+        textareaPurpose:
+          "A proposal for a prospective client contract - follow-up to a previous call with Robert & Sarah",
         contextCategories: [props.salesReplyCategoryId],
         chatApiConfigs: {
           suggestionsApiConfig: {
             // makeSystemPrompt: makeSystemPrompt,
             // fewShotMessages: fewShotMessages,
-            forwardedParams: {
-              max_tokens: 5,
-              stop: ["\n", ".", ","],
-            },
+
+            maxTokens: 5,
+            stop: ["\n", ".", ","],
           },
           insertionApiConfig: {},
         },
         debounceTime: 250,
       }}
-  />
-  )
+    />
+  );
 }
